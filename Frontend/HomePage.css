@@ -1,0 +1,293 @@
+
+*{
+	font-family: Sahel;
+  	src: url('https://cdn.fontcdn.ir/Font/Persian/Sahel/Sahel-Black.eot');
+ 	src: url('https://cdn.fontcdn.ir/Font/Persian/Sahel/Sahel-Black.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.fontcdn.ir/Font/Persian/Sahel/Sahel-Black.woff') format('woff'),
+    url('https://cdn.fontcdn.ir/Font/Persian/Sahel/Sahel-Black.ttf') format('truetype');
+  	font-weight: 500;
+
+
+}
+
+@media (min-width: 300px){
+  #cont1 {
+    overflow-y: scroll;
+    width: 100%;
+	float: left;
+  }
+
+  #block{
+  	flex: 1 0 35%;
+  }
+}
+
+@media (min-width: 600px){
+  #cont1 {
+    overflow-y: scroll;
+    width: 100%;
+	float: left;
+  }
+
+  #block{
+  	flex: 1 0 25%;
+  }
+}
+
+@media (min-width: 1000px){
+  #cont1 {
+    overflow-y: scroll;
+    width: 100%;
+	float: left;
+  }
+
+  #block{
+  	flex: 1 0 21%;
+  }
+}
+
+#logo{
+	width: 100px;
+	height: 100px;
+	float: right;
+	margin-right: 10px;
+
+}
+
+#sidebar{
+	background-color: rgb(12, 112, 174);
+	color: white;
+	padding: 20px;
+	float: right;
+	width: 300px;
+	height: 87vh;
+	padding-right: 20px;
+
+}
+
+h4{
+	font-weight: bold;
+	direction: rtl;
+	margin-bottom: 20px;
+}
+
+#cont1{
+	overflow: auto;
+	text-align: center;
+	height: 80vh;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 30px;
+}
+
+#cont2{
+	visibility: hidden;
+}
+
+#signupButton {
+	background-color : rgba(12, 112, 174, 1);;
+	color: white;
+	border-color: 	rgba(12, 112, 174, 1);;
+	margin: 20px;
+	width: 90px;
+	height: 30px;
+	margin-top: 40px;
+	margin-right: 0px;
+	
+	float: left;
+
+	
+
+}
+
+#loginButton {
+	color: rgba(12, 112, 174, 1);
+	background-color: rgb(231, 239, 248);
+	border-color: 	rgba(12, 112, 174, 1);
+	margin: 20px;
+	width: 90px;
+	
+	height: 30px;
+	float: left;
+	margin-top: 40px;
+    margin-right: 0px;
+
+
+
+
+
+}
+
+#profileButton {
+	background-color : rgba(12, 112, 174, 1);;
+	color: white;
+	border-color: 	rgba(12, 112, 174, 1);;
+	margin: 20px;
+	width: 90px;
+	height: 30px;
+	margin-top: 40px;
+	margin-right: 0px;
+	
+	float: left;
+
+	
+
+}
+
+#startButton{
+    background-color: yellow;
+}
+
+#header1{
+	
+	direction: rtl;
+	width: 100%;
+	height: 100px;
+	
+	
+
+}
+
+.active a {
+    color: rgba(12, 112, 174, 1)!important;
+}
+
+#hButton{
+	float: right;
+	display: inline;
+	position: relative;
+	color: rgba(12, 112, 174, 1);
+	border:none; 	
+	background-color: rgb(231, 239, 248);
+	margin-right: 140px;
+}
+#hButton:focus{
+	border-bottom: solid;
+	border-color: rgba(12, 112, 174, 1);
+	background-color: white;
+}
+
+#dButton:focus{
+	border-bottom: solid;
+	border-color: rgba(12, 112, 174, 1);
+	background-color: white;
+}
+
+#dButton{
+	float: right;
+	display: inline;
+	position: relative;
+	color: rgba(12, 112, 174, 1);
+}
+
+#headbox{
+	width: 100%;
+	background-color: rgb(231, 239, 248);
+	position: fixed;
+
+}
+#list1{
+	direction: rtl;
+	font-size: 17px;
+	margin-bottom: 20px;
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  float: left;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#halatshab{
+	float: right;
+	margin-left: 150px;
+}
+
+#shab{
+	direction: rtl;
+}
+
+.container-fluid{
+	float: right;
+	margin-right: 20px;
+}
+
+#row1{
+	display: flex;
+	height: 100%;
+}
+
+.dark,
+.dark * {
+    background-color: #222;
+    color: #e6e6e6;
+    border-color: #e6e6e6;
+}
+
+#block{
+	margin: 5px;
+}
+
+#blockImage{
+	width: 100%;
+	height: auto;
+}
