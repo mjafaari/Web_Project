@@ -1,0 +1,45 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: rgba(40, 44, 52, 0.04);
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+  justify-content: flex-start;
+  /*font-size: calc(10px + 2vmin);*/
+}
+
+.App-body {
+  /*display: block;*/
+  padding: 40px 10px 10px;
+  min-height: 100vh;
+  min-width: 100vw;
+  z-index: 0;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+.container {
+  /*display: inline-block;*/
+  cursor: pointer;
+  position: fixed;
+  max-width: 40px;
+  z-index: 1;
+}
+
+.bar{
+  width: 30px;
+  height: 5px;
+  background-color: #f47726;
+  margin: 5px 0;
+}
+
