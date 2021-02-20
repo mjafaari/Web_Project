@@ -6,7 +6,7 @@ const configs = {
     rabbit_url: 'amqp://localhost:5672',
     mongo_url: 'mongodb://localhost:27017/xptrivia',
     MATCH_QUESTION_NUMBER: 5,
-    MATCH_TURN_TIME: 20000,
+    MATCH_TURN_TIME: 19000,
     MATCH_TURN_BASE_SCORE: 100,
     GAME_MODE: ['dices', 'marbles', "rabbits_way", 'birds'],
     BASE_COIN: 1000,
@@ -15,7 +15,7 @@ const configs = {
     BASE_WINNING_EXPERIENCE: 500,
     BASE_TIME_SCORE: 10,
     BASE_SCORE_POWER: 1.5,
-    MAX_TIMEOUT: 26000,
+    MAX_TIMEOUT: 27000,
     USER_STATES: {
         offline: "OFFLINE",
         match_pending: "MATCH_PENDING",
