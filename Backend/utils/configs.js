@@ -15,7 +15,7 @@ const configs = {
     BASE_WINNING_EXPERIENCE: 500,
     BASE_TIME_SCORE: 10,
     BASE_SCORE_POWER: 1.5,
-    MAX_TIMEOUT: 25000,
+    MAX_TIMEOUT: 26000,
     USER_STATES: {
         offline: "OFFLINE",
         match_pending: "MATCH_PENDING",
