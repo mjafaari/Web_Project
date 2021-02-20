@@ -190,10 +190,12 @@ router.get('/say_hello', function (req, res, next) {
     res.status(200).send('hello');
 });
 
+
 router.get('/add_item', async function (req, res, next) {
     await database.addRandomWheelItem();
     res.status(200).send();
 });
+
 
 router.get('/check_auth', function (req, res, next) {
     if (req.isAuthenticated){
