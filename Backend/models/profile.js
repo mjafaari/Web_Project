@@ -4,7 +4,8 @@ const cfg = require('../utils/configs');
 let profile_show = new mongoose.Schema({
     username: {type: String, required: true},
     name: String,
-    avatar: {type: Number, required: true}
+    password: String,
+    avatar: {type: Number, required: true},
 });
 
 let profile = new mongoose.Schema({

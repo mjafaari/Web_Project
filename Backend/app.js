@@ -20,15 +20,15 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
  * @unless is used for specifying paths which do not need authentication
  */
 app.use(
-    jwt({secret: cfg.SECRET_KEY}).unless(
+    jwt({secret: cfg.SECRET_KEY, algorithms: ['HS256']}).unless(
         {
-            path: ['/auth/login/', '/create_question', '/say_hello', '/add_item', '/admin/create_question/']
+            path: ['/auth/login/', '/create_question', '/say_hello', '/add_item', '/admin/create_question/', '/check_auth']
         })
 );
 
 
-var cors = require('cors');
-app.use(cors());
+// var cors = require('cors');
+// app.use(cors());
 
 /**
  * jwt auth middleware error handler:
@@ -36,7 +36,7 @@ app.use(cors());
  */
 app.use(function (err, req, res, next) {
     if (err.name === 'UnauthorizedError') {
-        res.status(401).send('invalid token...');
+        res.status(401).send(err);
     }
 });
 

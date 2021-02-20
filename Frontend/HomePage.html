@@ -11,8 +11,22 @@
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   <link rel="stylesheet" href="HomePage.css">
+  <script type="text/javascript">
+    function navbar() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.status == 200) {
+          document.getElementById("loginButton").hidden = true;
+        } else {
+          document.getElementById("profileButton").hidden = true;
+        }
+      };
+      xhttp.open("GET", "http://localhost:3000/check_auth", true);
+      xhttp.send(); 
+    }
+    </script>
 </head>
-<body >
+<body onload="navbar();">
 
   <div id="header1"  >
 
@@ -26,7 +40,6 @@
         </div>
         <button id= "profileButton" class ="float-right"><a href="Profile.html" style="color: white">پروفایل</a></button>
         <button id= "loginButton" class ="float-right"><a href="Login.html">ورود</a></button>
-        <button id= "signupButton" class ="float-right"><a href="Register.html" style="color: white">ثبت نام</a></button>
     </nav>
 
   </div> 
@@ -49,5 +62,4 @@
 
 
 </body> 
-
 </html>

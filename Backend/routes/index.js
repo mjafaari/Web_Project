@@ -7,6 +7,7 @@ var axios = require('axios');
 var jwt = require('jsonwebtoken');
 var boom = require('@hapi/boom');
 var multer = require('multer');
+const { route } = require('../app');
 
 
 var storage = multer.diskStorage({
@@ -78,10 +79,6 @@ router.post('/auth/login', async function (req, res, next) {
     let prof;
     try {
         switch (login_type) {
-            case 'guest':
-                let count = await database.last_id();
-                prof = {id: 'guest' + (count + 1), name: 'guest' + (count + 1), type: 'guest'};
-                break;
             case 'google-oauth2':
                 access_token = req.body.access_token;
                 prof = await googleStrategy(access_token).catch((err) => {
@@ -96,8 +93,20 @@ router.post('/auth/login', async function (req, res, next) {
                         'it might be because of expired access token, or because of poor connection from filtering')
                 });
                 break;
+            case 'email':
+                prof = {id: req.body.email, name: req.body.email,  type: 'email', password: req.body.password};
+                break; 
+            default:
+            case 'guest':
+                let count = await database.last_id();
+                prof = {id: 'guest' + (count + 1), name: 'guest' + (count + 1), type: 'guest'};
+                break;    
+            
         }
         let payload = await getOrCreatePlayer(prof);
+        if (payload === "err"){
+            res.status(401).send("invalid username and password");
+        }
         let token = await jwt.sign(payload, cfg.SECRET_KEY);
         res.status(200).send({username: payload.name, token: token});
     } catch (e) {
@@ -204,5 +213,13 @@ router.get('/add_item', async function (req, res, next) {
     await database.addRandomWheelItem();
     res.status(200).send();
 });
+
+router.get('/check_auth', function (req, res, next) {
+    if (req.isAuthenticated){
+        res.status(200).send("is authenticated")
+    } else {
+        res.status(401).send("is not authenticated")
+    }
+})
 
 module.exports = router;

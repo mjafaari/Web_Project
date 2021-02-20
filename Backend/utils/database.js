@@ -71,9 +71,20 @@ class database {
         try {
             let profile_result;
             if (prof.type !== 'guest')
-                profile_result = await profile.findOne({
-                    'show.username': prof.id
-                });
+                if (prof.type === 'email'){
+                    profile_result = await profile.findOne({
+                        'show.username': prof.id
+                    });
+                    if (profile_result && profile_result.show.password !== prof.password)
+                    {
+                        return "err";
+                    }
+                }
+                else {
+                    profile_result = await profile.findOne({
+                        'show.username': prof.id
+                    });
+                }
             if (!profile_result) {
                 let count = await this.last_id();
                 profile_result = await new profile({
@@ -81,6 +92,7 @@ class database {
                         username: prof.id,
                         name: prof.name,
                         avatar: 1,
+                        password: prof.password ?? ""
                     },
                     count: count + 1
                 });
