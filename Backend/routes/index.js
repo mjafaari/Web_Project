@@ -40,18 +40,6 @@ async function googleStrategy(access_token) {
     }
 }
 
-async function facebookStrategy(access_token) {
-    try {
-        let res = await axios({
-            method: 'get',
-            url: cfg.FACEBOOK_URL + access_token + cfg.FACEBOOK_FIELDS
-        });
-        return {id: res.data.id, name: res.data.name, type: 'facebook'};
-    } catch (err) {
-        throw err;
-    }
-}
-
 async function getOrCreatePlayer(prof) {
     return await database.create_or_find_player(prof);
 }
@@ -84,13 +72,6 @@ router.post('/auth/login', async function (req, res, next) {
                 prof = await googleStrategy(access_token).catch((err) => {
                     res.status(401).send('a problem has happened during retrieving data from google, ' +
                         'it might be because of expired access token.')
-                });
-                break;
-            case 'facebook':
-                access_token = req.body.access_token;
-                prof = await facebookStrategy(access_token).catch((err) => {
-                    res.status(401).send('a problem has happened during retrieving data from facebook, ' +
-                        'it might be because of expired access token, or because of poor connection from filtering')
                 });
                 break;
             case 'email':

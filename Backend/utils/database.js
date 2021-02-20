@@ -87,12 +87,17 @@ class database {
                 }
             if (!profile_result) {
                 let count = await this.last_id();
+                if(prof.password){
+                    password = prof.password;
+                }
+                else
+                    password = "";
                 profile_result = await new profile({
                     show: {
                         username: prof.id,
                         name: prof.name,
                         avatar: 1,
-                        password: prof.password ?? ""
+                        password: password
                     },
                     count: count + 1
                 });
