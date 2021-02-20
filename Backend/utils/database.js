@@ -166,14 +166,25 @@ class database {
     static async create_sample_questions(req) {
         try {
             for (let i = 0; i < 100; i++) {
-                let q = await new question({
-                    answer: 6,
-                    desc: Math.random().toString(36).substr(2, 10)
-                });
-                q.image.data = fs.readFileSync(req.file.path);
-                q.image.url = req.file.path;
-                q.image.contentType = 'img/png';
-                q.save();
+                if (i % 2 === 0){
+                    let q = await new question({
+                        answer: 6,
+                        desc: "جمع ۲ با ۴"
+                    });
+                    q.image.data = fs.readFileSync(req.file.path);
+                    q.image.url = req.file.path;
+                    q.image.contentType = 'img/png';
+                    q.save();
+                } else {
+                    let q = await new question({
+                        answer: 10,
+                        desc: "جمع ۳ با ۷"
+                    });
+                    q.image.data = fs.readFileSync(req.file.path);
+                    q.image.url = req.file.path;
+                    q.image.contentType = 'img/png';
+                    q.save();
+                }
             }
         } catch (e) {
 

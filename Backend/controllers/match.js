@@ -89,6 +89,8 @@ match.prototype._queueHandler = async function (io, socket, ch, player, queue) {
             if (!msg) {
                 _this._addPlayerToQueue(player, queue).then(() => {
                         console.log("\ntrying to join to room-" + player);
+                        console.log(socket);
+                        console.log(socket.id);
                         io.adapter.remoteJoin(socket.id, 'room-' + player, (err) => {
                             console.log("join first player to room: " + err)
                         });
@@ -97,8 +99,10 @@ match.prototype._queueHandler = async function (io, socket, ch, player, queue) {
 
                         socket.emit('match_request_answer', {state: "processing"});
                     }
-                ).catch(err =>
-                    socket.emit('match_request_answer', {state: "unhandled", error: err})
+                )
+                .catch(err =>
+                    console.log(err)
+                    // socket.emit('match_request_answer', {state: "unhandled", error: err})
                 );
                 return
             }
@@ -112,6 +116,7 @@ match.prototype._queueHandler = async function (io, socket, ch, player, queue) {
                         return;
                     }
                 }
+                console.log(result);
                 console.log("\ncould not match player " + player + " to player " + msg.content.toString() + " cause the second one was not pending for match");
                 await _this._queueHandler(io, socket, ch, player, queue);
             });
@@ -130,10 +135,13 @@ match.prototype._queueHandler = async function (io, socket, ch, player, queue) {
  * @returns {Promise<void>}
  */
 match.prototype._matchOpponents = async function (io, socket, first, second) {
+    console.log(first);
+    console.log(second);
     console.log("trying to join to room-" + first);
     io.adapter.remoteJoin(socket.id, 'room-' + first, (err) => {
         console.log("join second player to room: " + err)
     });
+
 
     redis.set(first, cfg.USER_STATES.in_match);
     redis.set(second, cfg.USER_STATES.in_match);

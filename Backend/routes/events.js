@@ -8,10 +8,10 @@ let match = new matching();
 
 module.exports = function (server) {
     const socket_io = socket(server);
-    // socket_io.adapter(redisAdapter({
-    //     host: 'localhost',
-    //     port: 6379
-    // }));
+    socket_io.adapter(redisAdapter({
+        host: 'localhost',
+        port: 6379
+    }));
     const io = socket_io.of('/');
 
     io.use(socket_jwt.authorize({
